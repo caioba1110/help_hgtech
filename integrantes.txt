@@ -1,7 +1,3 @@
-# help_hgtech
-
-Este repositório é sobre um projeto da UC de Sistemas distribuidos e mobile da Universidade São Judas Tadeu
-
 | Nome                       | RA         | email institucional                    |
 | -------------------------- | :--------: | :-------------------------------------:|
 | Caio Cavalcanti de Almeida | 81911968   | caioalmeida.1968@aluno.saojudas.br     |
