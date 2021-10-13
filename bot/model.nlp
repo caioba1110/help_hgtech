@@ -1,0 +1,749 @@
+{
+  "settings": {
+    "languages": [
+      "pt"
+    ],
+    "forceNER": true,
+    "tag": "nlp",
+    "threshold": 0.5,
+    "autoLoad": true,
+    "autoSave": true,
+    "modelFileName": "model.nlp",
+    "calculateSentiment": true
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager"
+    },
+    "locales": [
+      "pt"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "pt": {
+        "settings": {
+          "locale": "pt",
+          "trainByDomain": false,
+          "tag": "domain-manager-pt",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "bom,dia": {
+            "intent": "SAUDACAO",
+            "domain": "default"
+          },
+          "bom,tard": {
+            "intent": "SAUDACAO",
+            "domain": "default"
+          },
+          "bom,noit": {
+            "intent": "SAUDACAO",
+            "domain": "default"
+          },
+          "ae,bem,e,tud": {
+            "intent": "SAUDACAO",
+            "domain": "default"
+          },
+          "ola": {
+            "intent": "SAUDACAO",
+            "domain": "default"
+          },
+          "oi": {
+            "intent": "SAUDACAO",
+            "domain": "default"
+          },
+          "bom,tud": {
+            "intent": "SAUDACAO",
+            "domain": "default"
+          },
+          "fic,localiz,onde": {
+            "intent": "LOCALIZACAO",
+            "domain": "default"
+          },
+          "de,pont,referenc": {
+            "intent": "LOCALIZACAO",
+            "domain": "default"
+          },
+          "enderec": {
+            "intent": "LOCALIZACAO",
+            "domain": "default"
+          },
+          "da,empres,localizaca": {
+            "intent": "LOCALIZACAO",
+            "domain": "default"
+          },
+          "da,ele,erro,o,problem,softwar": {
+            "intent": "PROBLEMA",
+            "domain": "default"
+          },
+          "a,aplicaca,ela,esta,fech,problem": {
+            "intent": "PROBLEMA",
+            "domain": "default"
+          },
+          "carreg,ele,esta,lent,o,par,problem,softwar": {
+            "intent": "PROBLEMA",
+            "domain": "default"
+          },
+          "a,aplicaca,esta,falh,problem": {
+            "intent": "PROBLEMA",
+            "domain": "default"
+          },
+          "aplic,ele,fech,o,problem": {
+            "intent": "PROBLEMA",
+            "domain": "default"
+          },
+          "aplic,com,erro,esta,problem": {
+            "intent": "PROBLEMA",
+            "domain": "default"
+          },
+          "conect,nao,problem,softwar": {
+            "intent": "PROBLEMA",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "SAUDACAO": "default",
+          "LOCALIZACAO": "default",
+          "PROBLEMA": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "bom dia",
+            "intent": "SAUDACAO"
+          },
+          {
+            "domain": "default",
+            "utterance": "bom tarde",
+            "intent": "SAUDACAO"
+          },
+          {
+            "domain": "default",
+            "utterance": "bom noite",
+            "intent": "SAUDACAO"
+          },
+          {
+            "domain": "default",
+            "utterance": "e ae, tudo bem",
+            "intent": "SAUDACAO"
+          },
+          {
+            "domain": "default",
+            "utterance": "ola",
+            "intent": "SAUDACAO"
+          },
+          {
+            "domain": "default",
+            "utterance": "oi",
+            "intent": "SAUDACAO"
+          },
+          {
+            "domain": "default",
+            "utterance": "tudo bom",
+            "intent": "SAUDACAO"
+          },
+          {
+            "domain": "default",
+            "utterance": "onde fica localizado",
+            "intent": "LOCALIZACAO"
+          },
+          {
+            "domain": "default",
+            "utterance": "ponto de referencia",
+            "intent": "LOCALIZACAO"
+          },
+          {
+            "domain": "default",
+            "utterance": "endereco",
+            "intent": "LOCALIZACAO"
+          },
+          {
+            "domain": "default",
+            "utterance": "localizacao da empresa",
+            "intent": "LOCALIZACAO"
+          },
+          {
+            "domain": "default",
+            "utterance": "problema o software ele da erro",
+            "intent": "PROBLEMA"
+          },
+          {
+            "domain": "default",
+            "utterance": "problema a aplicação ela  está fechando",
+            "intent": "PROBLEMA"
+          },
+          {
+            "domain": "default",
+            "utterance": "problema o software ele está lento para carregar",
+            "intent": "PROBLEMA"
+          },
+          {
+            "domain": "default",
+            "utterance": "problema a aplicação está falhando",
+            "intent": "PROBLEMA"
+          },
+          {
+            "domain": "default",
+            "utterance": "problema o aplicativo ele fecha",
+            "intent": "PROBLEMA"
+          },
+          {
+            "domain": "default",
+            "utterance": "problema aplicativo está com erro",
+            "intent": "PROBLEMA"
+          },
+          {
+            "domain": "default",
+            "utterance": "problema software não conecta ",
+            "intent": "PROBLEMA"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "pt",
+              "tag": "nlu-pt",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "bom": 1,
+              "dia": 1,
+              "tard": 1,
+              "noit": 1,
+              "e": 1,
+              "ae": 1,
+              "tud": 1,
+              "bem": 1,
+              "ola": 1,
+              "oi": 1,
+              "onde": 1,
+              "fic": 1,
+              "localiz": 1,
+              "pont": 1,
+              "de": 1,
+              "referenc": 1,
+              "enderec": 1,
+              "localizaca": 1,
+              "da": 1,
+              "empres": 1,
+              "problem": 1,
+              "o": 1,
+              "softwar": 1,
+              "ele": 1,
+              "erro": 1,
+              "a": 1,
+              "aplicaca": 1,
+              "ela": 1,
+              "esta": 1,
+              "fech": 1,
+              "lent": 1,
+              "par": 1,
+              "carreg": 1,
+              "falh": 1,
+              "aplic": 1,
+              "com": 1,
+              "nao": 1,
+              "conect": 1
+            },
+            "intents": {
+              "SAUDACAO": 1,
+              "LOCALIZACAO": 1,
+              "PROBLEMA": 1
+            },
+            "intentFeatures": {
+              "SAUDACAO": {
+                "bom": 1,
+                "dia": 1,
+                "tard": 1,
+                "noit": 1,
+                "e": 1,
+                "ae": 1,
+                "tud": 1,
+                "bem": 1,
+                "ola": 1,
+                "oi": 1
+              },
+              "LOCALIZACAO": {
+                "onde": 1,
+                "fic": 1,
+                "localiz": 1,
+                "pont": 1,
+                "de": 1,
+                "referenc": 1,
+                "enderec": 1,
+                "localizaca": 1,
+                "da": 1,
+                "empres": 1
+              },
+              "PROBLEMA": {
+                "problem": 1,
+                "o": 1,
+                "softwar": 1,
+                "ele": 1,
+                "da": 1,
+                "erro": 1,
+                "a": 1,
+                "aplicaca": 1,
+                "ela": 1,
+                "esta": 1,
+                "fech": 1,
+                "lent": 1,
+                "par": 1,
+                "carreg": 1,
+                "falh": 1,
+                "aplic": 1,
+                "com": 1,
+                "nao": 1,
+                "conect": 1
+              }
+            },
+            "featuresToIntent": {
+              "bom": [
+                "SAUDACAO"
+              ],
+              "dia": [
+                "SAUDACAO"
+              ],
+              "tard": [
+                "SAUDACAO"
+              ],
+              "noit": [
+                "SAUDACAO"
+              ],
+              "e": [
+                "SAUDACAO"
+              ],
+              "ae": [
+                "SAUDACAO"
+              ],
+              "tud": [
+                "SAUDACAO"
+              ],
+              "bem": [
+                "SAUDACAO"
+              ],
+              "ola": [
+                "SAUDACAO"
+              ],
+              "oi": [
+                "SAUDACAO"
+              ],
+              "onde": [
+                "LOCALIZACAO"
+              ],
+              "fic": [
+                "LOCALIZACAO"
+              ],
+              "localiz": [
+                "LOCALIZACAO"
+              ],
+              "pont": [
+                "LOCALIZACAO"
+              ],
+              "de": [
+                "LOCALIZACAO"
+              ],
+              "referenc": [
+                "LOCALIZACAO"
+              ],
+              "enderec": [
+                "LOCALIZACAO"
+              ],
+              "localizaca": [
+                "LOCALIZACAO"
+              ],
+              "da": [
+                "LOCALIZACAO",
+                "PROBLEMA"
+              ],
+              "empres": [
+                "LOCALIZACAO"
+              ],
+              "problem": [
+                "PROBLEMA"
+              ],
+              "o": [
+                "PROBLEMA"
+              ],
+              "softwar": [
+                "PROBLEMA"
+              ],
+              "ele": [
+                "PROBLEMA"
+              ],
+              "erro": [
+                "PROBLEMA"
+              ],
+              "a": [
+                "PROBLEMA"
+              ],
+              "aplicaca": [
+                "PROBLEMA"
+              ],
+              "ela": [
+                "PROBLEMA"
+              ],
+              "esta": [
+                "PROBLEMA"
+              ],
+              "fech": [
+                "PROBLEMA"
+              ],
+              "lent": [
+                "PROBLEMA"
+              ],
+              "par": [
+                "PROBLEMA"
+              ],
+              "carreg": [
+                "PROBLEMA"
+              ],
+              "falh": [
+                "PROBLEMA"
+              ],
+              "aplic": [
+                "PROBLEMA"
+              ],
+              "com": [
+                "PROBLEMA"
+              ],
+              "nao": [
+                "PROBLEMA"
+              ],
+              "conect": [
+                "PROBLEMA"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "pt",
+                "tag": "nlu-pt",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              },
+              "features": [
+                "bom",
+                "dia",
+                "tard",
+                "noit",
+                "e",
+                "ae",
+                "tud",
+                "bem",
+                "ola",
+                "oi",
+                "onde",
+                "fic",
+                "localiz",
+                "pont",
+                "de",
+                "referenc",
+                "enderec",
+                "localizaca",
+                "da",
+                "empres",
+                "problem",
+                "o",
+                "softwar",
+                "ele",
+                "erro",
+                "a",
+                "aplicaca",
+                "ela",
+                "esta",
+                "fech",
+                "lent",
+                "par",
+                "carreg",
+                "falh",
+                "aplic",
+                "com",
+                "nao",
+                "conect"
+              ],
+              "intents": [
+                "SAUDACAO",
+                "LOCALIZACAO",
+                "PROBLEMA"
+              ],
+              "perceptrons": [
+                [
+                  6.4159016609191895,
+                  2.1174845695495605,
+                  2.1571106910705566,
+                  2.148179769515991,
+                  2.140961170196533,
+                  2.140961170196533,
+                  2.1345534324645996,
+                  2.140961170196533,
+                  8.367210388183594,
+                  8.322615623474121,
+                  -1.9146409034729004,
+                  -1.9146409034729004,
+                  -1.9146409034729004,
+                  -1.9145256280899048,
+                  -1.9145256280899048,
+                  -1.9145256280899048,
+                  -5.433132648468018,
+                  -1.802594542503357,
+                  -2.119091510772705,
+                  -1.802594542503357,
+                  -2.7262773513793945,
+                  -0.8163706064224243,
+                  -1.3365049362182617,
+                  -0.8163706064224243,
+                  -0.6869815587997437,
+                  -0.7059623599052429,
+                  -0.7059623599052429,
+                  -0.299437552690506,
+                  -1.2641267776489258,
+                  -0.6890034675598145,
+                  -0.13078811764717102,
+                  -0.13078811764717102,
+                  -0.13078811764717102,
+                  -0.32939451932907104,
+                  -0.6831760406494141,
+                  -0.3704853653907776,
+                  -0.83256995677948,
+                  -0.83256995677948,
+                  5.731452922822883
+                ],
+                [
+                  -3.0115883350372314,
+                  -0.9476792216300964,
+                  -0.887668251991272,
+                  -0.8397639989852905,
+                  -0.9040131568908691,
+                  -0.9040131568908691,
+                  -1.2120540142059326,
+                  -0.9040131568908691,
+                  -3.6260571479797363,
+                  -3.5988776683807373,
+                  3.5014140605926514,
+                  3.5014140605926514,
+                  3.5014140605926514,
+                  3.501514196395874,
+                  3.501514196395874,
+                  3.501514196395874,
+                  10.140209197998047,
+                  3.7960219383239746,
+                  2.890469789505005,
+                  3.7960219383239746,
+                  -2.1524429321289062,
+                  -1.1053656339645386,
+                  -1.3427412509918213,
+                  -1.1053656339645386,
+                  -1.0626243352890015,
+                  -0.508816659450531,
+                  -0.508816659450531,
+                  -0.22306181490421295,
+                  -0.7877176403999329,
+                  -0.3650921583175659,
+                  -0.07313456386327744,
+                  -0.07313456386327744,
+                  -0.07313456386327744,
+                  -0.21937867999076843,
+                  -0.25037091970443726,
+                  -0.13950036466121674,
+                  -0.3094943165779114,
+                  -0.3094943165779114,
+                  3.8008629406569203
+                ],
+                [
+                  -1.0641140937805176,
+                  -0.2794123888015747,
+                  -0.25152865052223206,
+                  -0.2232140153646469,
+                  -0.26753371953964233,
+                  -0.26753371953964233,
+                  -0.4426657557487488,
+                  -0.26753371953964233,
+                  -0.7658304572105408,
+                  -0.7629518508911133,
+                  -0.3436804413795471,
+                  -0.3436804413795471,
+                  -0.3436804413795471,
+                  -0.33461302518844604,
+                  -0.33461302518844604,
+                  -0.33461302518844604,
+                  -0.7580126523971558,
+                  -0.4679048955440521,
+                  -0.01656310446560383,
+                  -0.4679048955440521,
+                  6.462301731109619,
+                  1.5903499126434326,
+                  2.4694275856018066,
+                  1.5903499126434326,
+                  1.430977702140808,
+                  1.612120509147644,
+                  1.612120509147644,
+                  0.07618474960327148,
+                  2.2863495349884033,
+                  1.4899680614471436,
+                  -0.2906103730201721,
+                  -0.2906103730201721,
+                  -0.2906103730201721,
+                  1.5364747047424316,
+                  2.3802690505981445,
+                  0.9649868011474609,
+                  2.294098138809204,
+                  2.294098138809204,
+                  0.7639023006389686
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "pt",
+        "bom dia"
+      ],
+      [
+        "pt",
+        "bom tarde"
+      ],
+      [
+        "pt",
+        "bom noite"
+      ],
+      [
+        "pt",
+        "e ae, tudo bem"
+      ],
+      [
+        "pt",
+        "ola"
+      ],
+      [
+        "pt",
+        "oi"
+      ],
+      [
+        "pt",
+        "tudo bom"
+      ],
+      [
+        "pt",
+        "onde fica localizado"
+      ],
+      [
+        "pt",
+        "ponto de referencia"
+      ],
+      [
+        "pt",
+        "endereco"
+      ],
+      [
+        "pt",
+        "localizacao da empresa"
+      ],
+      [
+        "pt",
+        "problema o software ele da erro"
+      ],
+      [
+        "pt",
+        "problema a aplicação ela  está fechando"
+      ],
+      [
+        "pt",
+        "problema o software ele está lento para carregar"
+      ],
+      [
+        "pt",
+        "problema a aplicação está falhando"
+      ],
+      [
+        "pt",
+        "problema o aplicativo ele fecha"
+      ],
+      [
+        "pt",
+        "problema aplicativo está com erro"
+      ],
+      [
+        "pt",
+        "problema software não conecta "
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner",
+      "entityPreffix": "%",
+      "entitySuffix": "%"
+    },
+    "rules": {}
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {
+      "pt": {
+        "SAUDACAO": [
+          {
+            "answer": "olá sou um atendente virtual da Hgtech estou aqui para te ajudar.Qual a sua duvida?"
+          },
+          {
+            "answer": "Olá sou um atendente virtual da Hgtech e gosto de tirar dúvidas dos nosso clientes.Qual é a sua?"
+          }
+        ],
+        "LOCALIZACAO": [
+          {
+            "answer": "Rua Taquari, 546 - Mooca, São Paulo - SP, 03166-000 "
+          },
+          {
+            "answer": "Ok vou te mandar a localização no mapa!"
+          }
+        ],
+        "PROBLEMA": [
+          {
+            "answer": "Executa como administrador que o problema será resolvido"
+          },
+          {
+            "answer": "Da um click sobre o software e vai em conectar"
+          },
+          {
+            "answer": "Seu problema foi resolvido?"
+          },
+          {
+            "answer": "Desativa a rede 4g do celular e ativa novamente"
+          },
+          {
+            "answer": "Desinstala o software e reinstala  novamente"
+          }
+        ]
+      }
+    }
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}
