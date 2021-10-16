@@ -20,6 +20,8 @@
  manager.addDocument('pt', 'e ae, tudo bem', 'SAUDACAO');
  manager.addDocument('pt', 'ola', 'SAUDACAO');
  manager.addDocument('pt', 'oi', 'SAUDACAO');
+ manager.addDocument('pt', 'Oi tudo bem', 'SAUDACAO');
+
  manager.addDocument('pt', 'tudo bom', 'SAUDACAO');
 
 //Treino de localização
