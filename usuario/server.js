@@ -102,7 +102,7 @@ app.delete("/usuarios",(req, res) =>{
     console.log(req.body.id)
     usuarios = usuarios.filter(item => item.id !== req.body.id)
      console.log(usuarios)
-      res.status(204).end();
+      res.status(204).end() ;
 
 })
 
