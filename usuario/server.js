@@ -4,7 +4,7 @@ const http = require('http');
 const express = require('express');
 
 
-const usuarios =[
+let usuarios =[
     {
 
         id:1,
@@ -98,6 +98,13 @@ app.put("/usuarios",(req, res) =>{
 
 //Fazer delete
 
+app.delete("/usuarios",(req, res) =>{
+    console.log(req.body.id)
+    usuarios = usuarios.filter(item => item.id !== req.body.id)
+     console.log(usuarios)
+      res.status(204).end();
+
+})
 
 
 
