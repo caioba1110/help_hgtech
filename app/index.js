@@ -61,7 +61,7 @@ async function login_cliente(leitor) {
 // Cliente e funcionario
 function printa_conversa(conversa) {
     console.log("Digite 'sair' para encerrar nossa conversa.")
-    // console.clear()
+    console.clear()
     for (i = 0; i < conversa.length; i++) {
         console.log('\n')
         console.log(cores["red"], conversa[i].cargo + " : ", cores["green"], conversa[i].nome, '\x1b[0m')
@@ -167,12 +167,12 @@ function lista_conversas(leitor) {
     // Pega id das conversas
     ids_conversas = [1, 2, 3]
 
-    leitor.question(`Esses são os ids das conversas. \nEscolha um para iniciar uma nova conversa.\n\n${ids_conversas}\n -1 para mostrar as conversas novamente.`, (answer) => {
-        if (answer < 0) {
+    leitor.question(`Esses são os ids das conversas. \nEscolha um para iniciar uma nova conversa.\n\n${ids_conversas}\n -1 para mostrar as conversas novamente.`, (id) => {
+        if (id < 0) {
             lista_conversas(leitor)
         } else {
-            id = 1
-            pega_nova_mensagem(id)
+            // id = "1"
+            pega_nova_mensagem(leitor, id)
             abre_chat(leitor, id, "Tiago", "funcionario")
         }
     })
