@@ -20,7 +20,6 @@ app.post('/login', (req, res) => {
     let values = [
         idCPF,
         senha
-
     ]
 
     connection.execute(
@@ -37,12 +36,15 @@ app.post('/login', (req, res) => {
                 }, SECRET, {
                     expiresIn: 300
                 })
+                console.log('Usuário encontrado')
                 return res.json({
                     auth:true,
-                    token:token
+                    token:token,
+                    nome: results[0].nome
                 })
             }else{
-                res.send('Nenhum usuário encontrado')
+                console.log('Nenhum usuário encontrado')
+                res.status(401).send('Nenhum usuário encontrado')
             }
         }    
     
@@ -171,7 +173,7 @@ function verifyJWT (req, res, next){
     const token = req.headers['x-access-token']
     jwt.verify(token, SECRET, function (err, decoded){
         if(err){
-            return res.status(500).json({auth:false, message: 'deu pau'})
+            return res.status(500).json({auth:false, message: 'Ocorreu um erro'})
         }else {
             console.log(decoded)
             next()

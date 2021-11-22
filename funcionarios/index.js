@@ -2,12 +2,57 @@ const express = require('express')
 const utils = require('./utils.js')
 require('dotenv').config()
 
+const jwt= require('jsonwebtoken')
 const app = express()
 app.use(express.json())
 
-const { HOST, USER, PASSWORD, DATABASE } = process.env
+const { HOST, USER, PASSWORD, DATABASE, SECRET } = process.env
 
-app.get('/funcionarios', (req, res) => {
+app.post('/login', (req, res) => {
+    connection = utils.create_connection(HOST, USER, PASSWORD, DATABASE)
+    const sql = 'SELECT * from tb_funcionarios WHERE email = ? and senha = ?'
+    const {
+        email,
+        senha
+
+    } = req.body
+
+    let values = [
+        email,
+        senha
+    ]
+
+    connection.execute(
+        sql,
+        values,
+        (err, results, fields) =>{
+            if(err){
+                res.send(err)
+
+                
+            }else if(results.length){
+                const token = jwt.sign({
+                    results
+                }, SECRET, {
+                    expiresIn: 300
+                })
+                console.log('Usuário encontrado')
+                return res.json({
+                    auth:true,
+                    token:token,
+                    nome: results[0].nome
+                })
+            }else{
+                console.log('Nenhum usuário encontrado')
+                res.status(401).send('Nenhum usuário encontrado')
+            }
+        }    
+    
+    )
+
+})
+
+app.get('/funcionarios', verifyJWT, (req, res) => {
     connection = utils.create_connection(HOST, USER, PASSWORD, DATABASE)
     const sql = 'SELECT * from tb_funcionarios'
     connection.query(
@@ -208,6 +253,20 @@ app.delete('/cargos', (req, res) => {
     )
 
 })
+
+function verifyJWT (req, res, next){
+    const token = req.headers['x-access-token']
+    jwt.verify(token, SECRET, function (err, decoded){
+        if(err){
+            return res.status(500).json({auth:false, message: 'Ocorreu um erro'})
+        }else {
+            console.log(decoded)
+            next()
+        }
+    })
+
+    
+}
 
 const porta = 5000
 

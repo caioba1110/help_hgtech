@@ -1,0 +1,9 @@
+app: SEM ROTA
+
+chat_heroku: http://localhost:2000/
+
+chamados: http://localhost:3000/
+
+usuarios: http://localhost:4000/
+
+funcionario:  http://localhost:5000/

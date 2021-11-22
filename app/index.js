@@ -57,16 +57,43 @@ async function login_cliente(leitor) {
     })
 }
 
+async function login_funcionario(leitor) {
+    return new Promise((resolve, reject) => {
+        leitor.question("Digite seu email:", (email) => {
+            leitor.question("Digite sua senha:", (senha) => {
+                body = {
+                    "email": email,
+                    "senha": senha
+                }
+
+                const response = axios.post(
+                    'http://localhost:5000/login',
+                    body
+                );
+                response.then(
+                    (resposta) => {
+                        resolve(resposta['data']['nome'])
+                    }
+                ).catch((erro) => {
+                    resolve("erro")
+                })
+            })
+        })
+    })
+}
+
 // Cliente e funcionario
 function printa_conversa(conversa) {
     console.log("Digite 'sair' para encerrar nossa conversa.")
-    console.clear()
+    // console.clear()
+    console.log('\n----- INICIO CONVERSA -----')
     for (i = 0; i < conversa.length; i++) {
         console.log('\n')
         console.log(cores["red"], conversa[i].cargo + " : ", cores["green"], conversa[i].nome, '\x1b[0m')
         console.log('\n')
         console.log(cores["white"], conversa[i].mensagem, '\x1b[0m')
     }
+    console.log('\n----- FINAL DA CONVERSA ----')
 }
 
 function conecta_bot() {
@@ -125,7 +152,7 @@ function pega_nova_mensagem(leitor, id) {
             console.log("Seu chat será encerrado em 10 segundos por inoperacia.")
         }
 
-        if (aux == 5) {
+        if (aux == 300) {
             body = {
                 "id": id
             }
@@ -164,13 +191,21 @@ function pega_nova_mensagem(leitor, id) {
 }
 
 // funcionario
-function entra_funcionario(leitor) {
+async function entra_funcionario(leitor) {
     console.log('Entrou funcionario');
     lista_conversas(leitor)
+
+    nome = await login_funcionario(leitor)
+    if (nome == "erro"){
+        console.log(cores['red'], 'Usuário não encontrado.', '\x1b[0m')
+        inicia_chat(leitor)
+    }else{
+        lista_conversas(leitor, nome)
+    }
 }
 
 // funcionario
-async function lista_conversas(leitor) {
+async function lista_conversas(leitor, nome) {
     // Pega id das conversas
     ids_conversas = await axios.get(
         `https://ancient-brook-16755.herokuapp.com/conversa`
@@ -183,7 +218,7 @@ async function lista_conversas(leitor) {
             lista_conversas(leitor)
         } else {
             pega_nova_mensagem(leitor, id)
-            abre_chat(leitor, id, "Tiago", "funcionario")
+            abre_chat(leitor, id, nome, "funcionario")
         }
     })
 }
