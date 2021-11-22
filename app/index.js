@@ -40,12 +40,11 @@ async function login_cliente(leitor) {
                     "idCPF": cpf,
                     "senha": senha
                 }
-                    
+
                 const response = axios.post(
                     'http://localhost:4000/login',
                     body
                 );
-
                 response.then(
                     (resposta) => {
                         resolve(resposta['data']['nome'])
@@ -126,9 +125,17 @@ function pega_nova_mensagem(leitor, id) {
             console.log("Seu chat será encerrado em 10 segundos por inoperacia.")
         }
 
-        if (aux == 300) {
+        if (aux == 5) {
+            body = {
+                "id": id
+            }
+
             console.log("Seu chat foi encerrado por inoperacia.")
             // Aqui deverá bater no servidor e encerrar a conversa passando o id
+            id_deletado = await axios.delete(
+                `https://ancient-brook-16755.herokuapp.com/conversa`,
+                { "data": body }
+            );
             leitor.close()
             clearInterval(acabou_conversa)
         }
@@ -163,15 +170,18 @@ function entra_funcionario(leitor) {
 }
 
 // funcionario
-function lista_conversas(leitor) {
+async function lista_conversas(leitor) {
     // Pega id das conversas
-    ids_conversas = [1, 2, 3]
+    ids_conversas = await axios.get(
+        `https://ancient-brook-16755.herokuapp.com/conversa`
+    );
+
+    ids_conversas = ids_conversas['data']
 
     leitor.question(`Esses são os ids das conversas. \nEscolha um para iniciar uma nova conversa.\n\n${ids_conversas}\n -1 para mostrar as conversas novamente.`, (id) => {
         if (id < 0) {
             lista_conversas(leitor)
         } else {
-            // id = "1"
             pega_nova_mensagem(leitor, id)
             abre_chat(leitor, id, "Tiago", "funcionario")
         }
