@@ -18,7 +18,7 @@ app.get('/tb_chamado', (req, res) => {
     })
 })
 
-// faz a inser dos chamados pelo método POST
+// faz a inserção dos chamados pelo método POST
 app.post('/tb_chamado', (req, res) => {
     const connection = mysql.createConnection({
         host: HOST,
